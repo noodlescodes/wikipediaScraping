@@ -1,0 +1,11 @@
+How to use:
+
+Make sure there is at least one valid wikipedia title (such as "Computer") in the file sitesToGet.txt. Every link to another wikipedia page found on a page will be appended to this file.
+
+Make sure the file totalDown.txt contains an integer on a single line, it is going to be used to create file names for scraped sites, such as 0.txt, 1.txt, etc.
+
+sitesCompleted.txt is used to store the title and address of the sites that have already been scraped.
+
+Purpose:
+
+If you want all of wikipedia, download a dump of it (preferably from a p2p to keep the wikimedia servers unstressed), this script can be used to scrap a small amount of pages. Changing the number in the loop in the main() method will change the number of pages scraped, starting at the top of the file sitesToGet.txt.

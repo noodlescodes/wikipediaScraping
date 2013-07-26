@@ -216,8 +216,8 @@ def parse():
     if checkRedirect() == 0:
         return 0
     removals()
-    data = unicodedata.normalize('NFKD', data).encode('ascii', errors='ignore')
     getLinksFromPage()
+    data = unicodedata.normalize('NFKD', data).encode('ascii', errors='ignore')
     savePage()
     return 1
 

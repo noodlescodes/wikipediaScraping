@@ -46,7 +46,29 @@ def getContent():
     data = data["query"]["pages"]
     data = data[data.keys()[0]]["revisions"]
     data = data[-1] #I don't even know what's going on here, it works, not changing it now
-    data = data["*"]
+    data = data["*"]    
+
+def setupRedirect():
+    global data
+    p = re.compile('\[\[.*?\]\]')
+    rawText = re.search(p, data).group(0)
+    rawText = rawText[2:]
+    rawText = rawText[:-2]
+    words = rawText.split('|')
+    link = words[0]
+    f = open('sitesToGet.txt').readlines()
+    siteFile = open('sitesToGet.txt', 'w')
+    siteFile.write(link + "\n")
+    for i in range(1, len(lines) - 1):
+        siteFile.write(f[i])
+    siteFile.close()
+
+def checkRedirect():
+    global data
+    if data.find('REDIRECT') >= 0:
+        setupRedirect()
+        return 0
+    return 1
 
 #removes everything from the section onwards
 def removeReferences():
@@ -191,10 +213,13 @@ def savePage():
 def parse():
     global data
     getContent()
+    if checkRedirect() == 0:
+        return 0
     removals()
     data = unicodedata.normalize('NFKD', data).encode('ascii', errors='ignore')
     getLinksFromPage()
     savePage()
+    return 1
 
 #updates all the necessary files
 #sitesCompleted.txt lists all the sites that have been downloaded
@@ -217,8 +242,8 @@ def main():
         whichPage()
         print "Working on: " + addr2
         getPage()
-        parse()
-        updateFiles()
+        if parse() == 1:
+            updateFiles()
 
 class MLStripper(HTMLParser):
     def __init__(self):

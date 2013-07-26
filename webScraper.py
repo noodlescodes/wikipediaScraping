@@ -144,7 +144,8 @@ def removeBraces():
 #remove certain punctuation marks
 def removePunctuation():
     global data
-    p = re.compile('[\'\"]')
+#    p = re.compile('[\'\"]')
+    p = re.compile('\"')
     data = re.sub(p, '', data)
     p = re.compile('\&nbsp\;')
     data = re.sub(p, ' ', data)

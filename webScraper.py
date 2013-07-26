@@ -179,7 +179,7 @@ def savePage():
     f = open('totalDown.txt', 'r')
     fileNumber = f.readline()[:-1]
     f.close()
-    fileName = fileNumber + ".txt"
+    fileName = fileNumber + ".txt" #change this line to save to a different location
     f = open(fileName, 'w')
     f.write(data)
     f.close()

@@ -239,7 +239,7 @@ def updateFiles():
 
 def main():
     global addr2
-    for i in range(0, 5): #change the upper bound on the range to scrape more pages
+    for i in range(0, 1000): #change the upper bound on the range to scrape more pages
         whichPage()
         print "Working on: " + addr2
         getPage()

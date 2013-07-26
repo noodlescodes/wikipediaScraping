@@ -217,7 +217,7 @@ def parse():
         return 0
     removals()
     getLinksFromPage()
-    data = unicodedata.normalize('NFKD', data).encode('ascii', errors='ignore')
+    data = unicodedata.normalize('NFKD', data).encode('ascii', errors='replace')
     savePage()
     return 1
 

@@ -178,7 +178,7 @@ def savePage():
     f = open('totalDown.txt', 'r')
     fileNumber = f.readline()[:-1]
     f.close()
-    fileName = fileNumber + ".txt" #change this line to save to a different location
+    fileName = "/media/usbstick/wikiPages" + fileNumber + ".txt" #change this line to save to a different location
     f = open(fileName, 'w')
     f.write(data)
     f.close()
@@ -213,7 +213,7 @@ def updateFiles():
 
 def main():
     global addr2
-    for i in range(0, 1): #change the upper bound on the range to scrape more pages
+    for i in range(0, 5): #change the upper bound on the range to scrape more pages
         whichPage()
         print "Working on: " + addr2
         getPage()

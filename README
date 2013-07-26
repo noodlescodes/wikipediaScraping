@@ -1,3 +1,5 @@
+Be aware of wikimedia's api etiquette: http://www.mediawiki.org/wiki/API:Etiquette
+
 How to use:
 
 Make sure there is at least one valid wikipedia title (such as "Computer") in the file sitesToGet.txt. Every link to another wikipedia page found on a page will be appended to this file.

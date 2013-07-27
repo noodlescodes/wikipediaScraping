@@ -15,3 +15,7 @@ If you want all of wikipedia, download a dump of it (preferably from a p2p to ke
 TODO:
 
 Need to make sure I don't get the same page twice.
+
+NOTE:
+
+So many commits because I'm testing on a raspPi and don't want to edit code in nano so I'm coding on laptop and pushing it.

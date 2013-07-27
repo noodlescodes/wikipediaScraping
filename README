@@ -10,4 +10,8 @@ sitesCompleted.txt is used to store the title and address of the sites that have
 
 Purpose:
 
-If you want all of wikipedia, download a dump of it (preferably from a p2p to keep the wikimedia servers unstressed), this script can be used to scrap a small amount of pages. Changing the number in the loop in the main() method will change the number of pages scraped, starting at the top of the file sitesToGet.txt.
+If you want all of wikipedia, download a dump of it (preferably from a p2p to keep the wikimedia servers unstressed), this script can be used to scrap a small amount of pages. Changing the number in the loop in the main() method will change the number of pages scraped, starting at the top of the file sitesToGet.txt and then a breadth first search of all the links of each page is performed until the number of page lookups desired is performed.
+
+TODO:
+
+Need to make sure I don't get the same page twice.

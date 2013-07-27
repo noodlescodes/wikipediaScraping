@@ -4,6 +4,7 @@ import json
 import urllib
 import re
 import unicodedata
+import codecs
 from HTMLParser import HTMLParser
 
 #putting variables here doesn't seem right, and I'm sure I can move the constAddr1 and constAddr3 variables

@@ -60,7 +60,7 @@ def getContent():
         data["missing"]
         print "test2"
         removeFirstSiteToGet()
-    except:
+    except KeyError:
         data = data["revisions"]
         data = data[-1] #I don't even know what's going on here, it works, not changing it now
         data = data["*"]    

@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+#TODO
+#Check to see if a link is dead
+
 import json
 import urllib
 import re
@@ -190,7 +193,8 @@ def getLinksFromPage():
         link = words[0]
         word = words[len(words) - 1]
         data = re.sub(p, word, data, 1)
-        siteFile.write(link + "\n")
+        if link.find("\#") < 0:
+            siteFile.write(link + "\n")
         rawText = re.search(p, data)
     siteFile.close()
 

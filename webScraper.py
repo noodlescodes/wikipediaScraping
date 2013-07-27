@@ -41,9 +41,10 @@ def removeTags(html):
 
 def removeFirstSiteToGet():
     f = open('sitesToGet.txt').readlines()
+    siteFile = open('sitesToGet.txt', 'w')
     for i in range(1, len(f) - 1):
-        f.write(f[i])
-    f.close()
+        siteFile.write(f[i])
+    siteFile.close()
 
 def getContent():
     global htmlText

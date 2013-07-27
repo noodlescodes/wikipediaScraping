@@ -75,7 +75,7 @@ def setupRedirect():
     rawText = rawText[:-2]
     words = rawText.split('|')
     link = words[0]
-    link = unicodedata.nromalize('NFKD', link).encode('UTF-8', errors='ignore')
+    link = unicodedata.normalize('NFKD', link).encode('UTF-8', errors='ignore')
     f = open('sitesToGet.txt').readlines()
     siteFile = open('sitesToGet.txt', 'w')
     siteFile.write(link + "\n")

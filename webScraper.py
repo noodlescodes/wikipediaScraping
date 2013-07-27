@@ -57,10 +57,9 @@ def getContent():
     #then the key "revisions" exists and there won't
     #be a problem...hopefully
     try:
-        print "test1"
         data["missing"]
-        print "test2"
         removeFirstSiteToGet()
+        print " : page missing",
         return 0
     except KeyError:
         data = data["revisions"]
@@ -87,6 +86,7 @@ def checkRedirect():
     global data
     if data.find('REDIRECT') >= 0:
         setupRedirect()
+        print " : redirected, ignoring",
         return 0
     return 1
 
@@ -263,10 +263,11 @@ def main():
     global addr2
     for i in range(0, 1000): #change the upper bound on the range to scrape more pages
         whichPage()
-        print "Working on: " + addr2
+        print "Working on: " + addr2,
         getPage()
         if parse() == 1:
             updateFiles()
+        print ""
 
 class MLStripper(HTMLParser):
     def __init__(self):

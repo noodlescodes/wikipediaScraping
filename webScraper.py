@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-#TODO
-#Check to see if a link is dead
-
 import json
 import urllib
 import re
@@ -42,14 +39,29 @@ def removeTags(html):
     s.feed(html)
     data = s.get_data()
 
+def removeFirstSiteToGet():
+    f = open('sitesToGet.txt').readlines()
+    for i in range(1, len(f) - 1):
+        f.write(f[i])
+    f.close()
+
 def getContent():
     global htmlText
     global data
     data = json.load(htmlText)
     data = data["query"]["pages"]
-    data = data[data.keys()[0]]["revisions"]
-    data = data[-1] #I don't even know what's going on here, it works, not changing it now
-    data = data["*"]    
+    data = data[data.keys()[0]]
+    #this try/except checks if the page is missing
+    #if it is, it'll run cleanly. If it's not missing
+    #then the key "revisions" exists and there won't
+    #be a problem...hopefully
+    try:
+        data["missing"]
+        removeFirstSiteToGet()
+    except:
+        data = data["revisions"]
+        data = data[-1] #I don't even know what's going on here, it works, not changing it now
+        data = data["*"]    
 
 def setupRedirect():
     global data

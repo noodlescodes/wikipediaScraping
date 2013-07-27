@@ -193,7 +193,7 @@ def getLinksFromPage():
         link = words[0]
         word = words[len(words) - 1]
         data = re.sub(p, word, data, 1)
-        if link.find("\#") < 0:
+        if link.find("#") < 0:
             siteFile.write(link + "\n")
         rawText = re.search(p, data)
     siteFile.close()

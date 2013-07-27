@@ -56,7 +56,9 @@ def getContent():
     #then the key "revisions" exists and there won't
     #be a problem...hopefully
     try:
+        print "test1"
         data["missing"]
+        print "test2"
         removeFirstSiteToGet()
     except:
         data = data["revisions"]

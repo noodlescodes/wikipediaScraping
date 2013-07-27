@@ -61,10 +61,12 @@ def getContent():
         data["missing"]
         print "test2"
         removeFirstSiteToGet()
+        return 0
     except KeyError:
         data = data["revisions"]
         data = data[-1] #I don't even know what's going on here, it works, not changing it now
-        data = data["*"]    
+        data = data["*"]
+        return 1
 
 def setupRedirect():
     global data
@@ -232,14 +234,15 @@ def savePage():
 
 def parse():
     global data
-    getContent()
-    if checkRedirect() == 0:
-        return 0
-    removals()
-    data = unicodedata.normalize('NFKD', data).encode('UTF-8', errors='ignore')
-    getLinksFromPage()
-    savePage()
-    return 1
+    if getContent() == 1:
+        if checkRedirect() == 0:
+            return 0
+        removals()
+        data = unicodedata.normalize('NFKD', data).encode('UTF-8', errors='ignore')
+        getLinksFromPage()
+        savePage()
+        return 1
+    return 0
 
 #updates all the necessary files
 #sitesCompleted.txt lists all the sites that have been downloaded

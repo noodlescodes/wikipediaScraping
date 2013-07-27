@@ -4,7 +4,6 @@ import json
 import urllib
 import re
 import unicodedata
-import codecs
 from HTMLParser import HTMLParser
 
 #putting variables here doesn't seem right, and I'm sure I can move the constAddr1 and constAddr3 variables
@@ -77,7 +76,7 @@ def setupRedirect():
     words = rawText.split('|')
     link = words[0]
     f = open('sitesToGet.txt').readlines()
-    siteFile = codecs.open('sitesToGet.txt', 'w', "UTF-8")
+    siteFile = open('sitesToGet.txt', 'w')
     siteFile.write(link + "\n")
     for i in range(1, len(lines) - 1):
         siteFile.write(f[i])

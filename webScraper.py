@@ -165,7 +165,6 @@ def removeBraces():
 #remove certain punctuation marks
 def removePunctuation():
     global data
-#    p = re.compile('[\'\"]')
     p = re.compile('\"')
     data = re.sub(p, '', data)
     p = re.compile('\&nbsp\;')
@@ -197,6 +196,17 @@ def removals():
     removePunctuation()
     removeNewLine()
 
+def dup(i):
+    completed = open('sitesCompleted.txt').readlines()
+    toGet = open('sitesToGet.txt').readlines()
+    for j in range(0, len(completed) - 1):
+        if i == completed(j):
+            return 1
+    for j in range(0, len(toGet) - 1):
+        if i == toGet(j):
+            return 1
+    return 0
+
 #finds all the links left on the page after removal, and writes them to file and replaces the link with the correct word in the data
 def getLinksFromPage():
     global data
@@ -212,7 +222,8 @@ def getLinksFromPage():
         word = words[len(words) - 1]
         data = re.sub(p, word, data, 1)
         if link.find("#") < 0:
-            siteFile.write(link + "\n")
+            if dup(link) == 0:
+                siteFile.write(link + "\n")
         rawText = re.search(p, data)
     siteFile.close()
 
@@ -252,7 +263,7 @@ def updateFiles():
     global lines
     global addr2
     f = open('sitesCompleted.txt', 'a')
-    f.write(addr2 + " | " + page + "\n")
+    f.write(addr2 + "\n")
     f.close()
     lines = open('sitesToGet.txt').readlines()
     f = open('sitesToGet.txt', 'w')

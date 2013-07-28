@@ -200,10 +200,10 @@ def dup(i):
     completed = open('sitesCompleted.txt').readlines()
     toGet = open('sitesToGet.txt').readlines()
     for j in range(0, len(completed) - 1):
-        if i == completed(j):
+        if i == completed[j]:
             return 1
     for j in range(0, len(toGet) - 1):
-        if i == toGet(j):
+        if i == toGet[j]:
             return 1
     return 0
 

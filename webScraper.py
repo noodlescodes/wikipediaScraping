@@ -100,6 +100,8 @@ def removeReferences():
         data = data[:data.find("==See also==") - 1]
     if data.find("==Notes==") >= 0:
         data = data[:data.find("==Notes==") - 1]
+    if data.find("==Bibliography==") >= 0:
+        data = data[:data.find("==Bibliography==") - 1]
 
 #removes the infobox because it's rarely natural
 def removeInfobox():
@@ -165,7 +167,7 @@ def removeBraces():
 #remove certain punctuation marks
 def removePunctuation():
     global data
-    p = re.compile('\"')
+    p = re.compile('[\'\"]')
     data = re.sub(p, '', data)
     p = re.compile('\&nbsp\;')
     data = re.sub(p, ' ', data)
@@ -234,7 +236,7 @@ def savePage():
     f = open('totalDown.txt', 'r')
     fileNumber = f.readline()[:-1]
     f.close()
-    fileName = "/media/usbstick/wikiPages/" + fileNumber + ".txt" #change this line to save to a different location
+    fileName = fileNumber + ".txt" #change this line to save to a different location
     f = open(fileName, 'w')
     f.write(data)
     f.close()
